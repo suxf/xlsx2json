@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/workbook.js"],"names":["Workbook"],"mappings":";;;;;;;;;IAAqBA,Q;oDACN,E;gDAEJ,E","sourcesContent":["export default class Workbook {\n  SheetNames = [];\n\n  Sheets = {};\n}\n"],"file":"workbook.js"}
