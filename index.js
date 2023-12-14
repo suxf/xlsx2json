@@ -4,6 +4,7 @@ const path = require('path');
 const glob = require('glob');
 const _ = require('lodash');
 const config = require('./config.json');
+var readline = require('readline-sync');
 
 /**
  * all commands
@@ -52,12 +53,17 @@ parsed_cmds.forEach(function (e) {
  * args: --export [cmd_line_args] [.xlsx files list].
  */
 function exportJson(args) {
+    var uglify = readline.question("Compress JSON? [Press enter directly to read the configuration] (y/n): ");
+    if(uglify == "y") uglify = true;
+    else if(uglify == 'n') uglify = false;
+    else uglify = config.json.uglify;
+
     if (typeof args === 'undefined' || args.length === 0) {
         let files = glob.sync(config.xlsx.src);
 
         files.forEach(item => {
-            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest1), path.join(__dirname, config.csharp.csharp_dest1), false);
-            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest2), path.join(__dirname, config.csharp.csharp_dest2), true);
+            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest1), path.join(__dirname, config.csharp.csharp_dest1), false, uglify);
+            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest2), path.join(__dirname, config.csharp.csharp_dest2), true, uglify);
         });
 
         if (config.cs) {
@@ -70,8 +76,8 @@ function exportJson(args) {
                 let files = glob.sync(src);
 
                 files.forEach(item => {
-                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest1), path.join(__dirname, config.csharp.csharp_dest1), false);
-                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest2), path.join(__dirname, config.csharp.csharp_dest2), true);
+                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest1), path.join(__dirname, config.csharp.csharp_dest1), false, uglify);
+                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_dest2), path.join(__dirname, config.csharp.csharp_dest2), true, uglify);
                 });
             });
 

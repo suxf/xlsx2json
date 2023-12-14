@@ -2,6 +2,10 @@
 > 让excel支持复杂的json格式, 将xlsx文件转成json以及csharp脚本。
 
 ### 更新日志
+* 2023-9-22 v0.1.1
+  - feature: 初次使用时自动创建配置文件。
+  - feature: 导出时提供是否需要压缩json选项。
+
 * 2023-9-22 v0.1.0
   - feature: 增加对C#脚本导出支持。
   - feature: 支持C#脚本注释导出。

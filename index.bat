@@ -2,7 +2,7 @@
 title [convert excel]
 :: echo press any button to start.
 :: @pause > nul
-echo convert excel start ....
+:: echo convert excel start ....
 
 :: 没有bin\config目录创建一个bin\config目录
 if not exist .\bin\config1 mkdir .\bin\config1
