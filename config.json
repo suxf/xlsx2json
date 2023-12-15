@@ -1,18 +1,18 @@
 {
   "xlsx": {
     "head": 2,
-    "src": "../Configs/**/[^~$]*.xls[xm]",
-    "json_dest1": "./bin/config1",
-    "json_dest2": "./bin/config2"
+    "src": "../excel/**/[^~$]*.xls[xm]",
+    "json_server_dest": "./bin/json_server",
+    "json_client_dest": "./bin/json_client"
   },
   "json": {
     "extension": ".json",
     "uglify": false
   },
   "csharp": {
-    "namespace": "JsonConfig",
-    "csharp_dest1": "./bin/csharp1",
-    "csharp_dest2": "./bin/csharp2"
+    "namespace": "Xlsx2Json",
+    "csharp_server_dest": "./bin/csharp_server",
+    "csharp_client_dest": "./bin/csharp_client"
   },
   "ts": false,
   "cs": true

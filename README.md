@@ -2,6 +2,9 @@
 > 让excel支持复杂的json格式, 将xlsx文件转成json以及csharp脚本。
 
 ### 更新日志
+* 2023-9-22 v0.1.2
+  - optimize: 优化路径结构。
+
 * 2023-9-22 v0.1.1
   - feature: 初次使用时自动创建配置文件。
   - feature: 导出时提供是否需要压缩json选项。
@@ -38,13 +41,13 @@
          * 导出的json存放的Server位置
          * 调用windows批处理请勿修改此配置
          */
-        "json_dest1": "./json1"
+        "json_server_dest": "./bin/json_server"
 
         /**
          * 导出带有头“_”的字段json存放的Client位置
          * 调用windows批处理请勿修改此配置
          */
-        "json_dest2": "./json2"
+        "json_client_dest": "./bin/json_client"
     },
 
     /**
@@ -74,18 +77,18 @@
       /**
       * 导出的json空间命名
       */
-      "namespace": "JsonConfig",
+      "namespace": "Xlsx2Json",
       /**
        * 导出的csharp存放的Server位置
        * 调用windows批处理请勿修改此配置
        */
-      "csharp_dest1": "./csharp1"
+      "csharp_server_dest": "./bin/csharp_server"
 
       /**
        * 导出带有头“_”的字段csharp存放的Client位置
        * 调用windows批处理请勿修改此配置
        */
-      "csharp_dest2": "./csharp2"
+      "csharp_client_dest": "./bin/csharp_client"
     },
 }
 ```

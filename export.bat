@@ -15,7 +15,7 @@ set PATH_CONFIG_FILENAME=settings\%MACAddress%.bat
 
 if exist %PATH_CONFIG_FILENAME% call %PATH_CONFIG_FILENAME%
 
-set TITLE_NAME=配置xlsx转换工具v0.1.1 Author:suxf
+set TITLE_NAME=Excel转换配置工具(支持xlsx,xlsm)
 title %TITLE_NAME%
 echo %TITLE_NAME%
 
@@ -50,7 +50,7 @@ echo 不需要使用管理员模式运行本工具！
     echo 5 配置的每行等号后不要留空格再写路径,会导致无法识别
     echo 6 配置结尾不要需要\分割符
 	echo.
-	echo # 配置文件地址 示例: .\Configs
+	echo # 配置文件地址 示例: .\Excels
 	set /p XLSX_CONFIG_PATH="[必填] XLSX_CONFIG_PATH:"
 	echo.
 	echo # 客户端配置JSON导出地址,无需求可回车跳过 示例: .\Client\Json
