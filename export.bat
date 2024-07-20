@@ -9,6 +9,10 @@ for /f "usebackq tokens=1 delims= " %%i in (`getmac ^| find "-"`) do (
 :break
 cls
 
+:: 如果存在ROOT_DIR则退出
+if "%ROOT_DIR%" neq "" exit
+if "!ROOT_DIR!" neq "" exit
+
 if not exist settings mkdir settings
 set PATH_CONFIG_FILENAME=settings\%MACAddress%.bat
 if exist %PATH_CONFIG_FILENAME% call %PATH_CONFIG_FILENAME%
@@ -16,18 +20,6 @@ if exist %PATH_CONFIG_FILENAME% call %PATH_CONFIG_FILENAME%
 pushd..
 set ROOT_DIR=%cd%
 popd
-
-set "SHORTCUT_NAME=~导出Json.lnk"
-net session >nul 2>&1
-if %errorLevel% == 0 (
-	if %cd:~, 1%==C (
-		echo 不要以管理员模式或者在C盘运行本工具！
-		pause
-		exit
-	)
-	powershell -command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut('%ROOT_DIR%\%XLSX_CONFIG_PATH%\%SHORTCUT_NAME%'); $s.TargetPath = '%cd%\export.bat'; $s.WorkingDirectory = '%cd%'; $s.Save()"
-	exit /b
-)
 
 set TITLE_NAME=Excel转换配置工具(支持xlsx,xlsm)
 title %TITLE_NAME%
@@ -57,7 +49,6 @@ goto :break_config_ok
 echo.
 echo 首次使用请先添加必要预设路径！
 echo 配置成功后如果想此再次配置,请直接【修改】或【删除】配置文件！
-echo 不要以管理员模式运行本工具！
 :: if not exist %PATH_CONFIG_FILENAME% (
 	echo.
 	echo 注意事项:
@@ -126,9 +117,9 @@ if not exist "..\%XLSX_CONFIG_PATH%\" (
 )
 
 :: 创建快捷方式
+set "SHORTCUT_NAME=~导出Json.lnk"
 if not exist "%ROOT_DIR%\%XLSX_CONFIG_PATH%\%SHORTCUT_NAME%" (
-	powershell -Command "Start-Process cmd -Verb RunAs -ArgumentList '/c cd /d %cd% & %~dpnx0 %*'"
-	echo 快捷方式创建完成
+	powershell -Command "Start-Process cmd -Verb RunAs -ArgumentList '/c "%cd%\\createshortcut.bat" cd /d %cd% %* & %~dpnx0 %*'"
 )
 
 :: echo 按任意键开始.
