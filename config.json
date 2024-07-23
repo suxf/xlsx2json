@@ -7,7 +7,7 @@
   },
   "json": {
     "extension": ".json",
-    "uglify": false
+    "uglify": true
   },
   "csharp": {
     "namespace": "Xlsx2Json",

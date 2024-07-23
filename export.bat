@@ -106,6 +106,7 @@ echo **************************
 echo * 再次确认后按任意键检测 *
 echo **************************
 echo.
+set "ROOT_DIR="
 @pause > nul
 goto :break
 
