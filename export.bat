@@ -114,7 +114,10 @@ goto :break
 
 if not exist "..\%XLSX_CONFIG_PATH%\" (
 	mkdir "..\%XLSX_CONFIG_PATH%\"
-	xcopy ".\excel\~*.xlsx" "..\%XLSX_CONFIG_PATH%\" /s /e /y /c /h /r 
+)
+
+for %%F in (.\excel\~*.xlsx) do (
+    xcopy "%%F" "..\%XLSX_CONFIG_PATH%\" /s /e /y /c /h /r 
 )
 
 :: 创建快捷方式
