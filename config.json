@@ -1,6 +1,5 @@
 {
   "xlsx": {
-    "head": 2,
     "src": "../excel/**/[^~$]*.xls[xm]",
     "json_server_dest": "./bin/json_server",
     "json_client_dest": "./bin/json_client"
@@ -10,7 +9,7 @@
     "uglify": true
   },
   "csharp": {
-    "namespace": "Xlsx2Json",
+    "namespace": "X2J.Config",
     "csharp_server_dest": "./bin/csharp_server",
     "csharp_client_dest": "./bin/csharp_client"
   },

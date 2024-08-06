@@ -116,8 +116,8 @@ if not exist "..\%XLSX_CONFIG_PATH%\" (
 	mkdir "..\%XLSX_CONFIG_PATH%\"
 )
 
-for %%F in (.\excel\~*.xlsx) do (
-    xcopy "%%F" "..\%XLSX_CONFIG_PATH%\" /s /e /y /c /h /r 
+for %%F in (.\docs\~*.xlsx) do (
+    xcopy "%%F" "..\%XLSX_CONFIG_PATH%\" /y /c /h /r
 )
 
 :: 创建快捷方式

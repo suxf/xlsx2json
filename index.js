@@ -61,9 +61,16 @@ function exportJson(args) {
     if (typeof args === 'undefined' || args.length === 0) {
         let files = glob.sync(config.xlsx.src);
 
+        console.log("\nClient Parser:");
+        files.forEach(item => {
+            // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
+            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+        });
+
+        console.log("\nServer Parser:");
         files.forEach(item => {
             xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
-            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+            // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
         });
 
         if (config.cs) {
@@ -75,15 +82,22 @@ function exportJson(args) {
             args.forEach(src => {
                 let files = glob.sync(src);
 
+                console.log("\nClient Parser:");
+                files.forEach(item => {
+                    // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
+                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+                });
+                
+                console.log("\nServer Parser:");
                 files.forEach(item => {
                     xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
-                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+                    // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
                 });
             });
 
             if (config.cs) {
-                xlsx_csharp.toCsConfMgr(path.join(__dirname, config.csharp.csharp_server_dest), false);
                 xlsx_csharp.toCsConfMgr(path.join(__dirname, config.csharp.csharp_client_dest), true);
+                xlsx_csharp.toCsConfMgr(path.join(__dirname, config.csharp.csharp_server_dest), false);
             }
         }
     }
