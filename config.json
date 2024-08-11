@@ -10,6 +10,7 @@
   },
   "csharp": {
     "namespace": "X2J.Config",
+    "has_extension": false,
     "csharp_server_dest": "./bin/csharp_server",
     "csharp_client_dest": "./bin/csharp_client"
   },
