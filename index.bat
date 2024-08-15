@@ -43,22 +43,16 @@ if not "%SERVER_CONFIG_CS_PATH%" == "" (
 if not exist "..\%SERVER_CONFIG_CS_PATH%\" mkdir "..\%SERVER_CONFIG_CS_PATH%\"
 
 echo Server Config CSharp Copy...
-@del /s/q "..\%SERVER_CONFIG_CS_PATH%\*Cfg.cs" > nul 2> nul
-@xcopy .\bin\csharp_server\*Cfg.cs "..\%SERVER_CONFIG_CS_PATH%\" /s /e /y /c /h /r > nul 2> nul
-
-@del /s/q "..\%SERVER_CONFIG_CS_PATH%\ConfMgr.cs" > nul 2> nul
-@xcopy .\bin\csharp_server\ConfMgr.cs "..\%SERVER_CONFIG_CS_PATH%\" /s /e /y /c /h /r > nul 2> nul
+@del /s/q "..\%SERVER_CONFIG_CS_PATH%\*.cs" > nul 2> nul
+@xcopy .\bin\csharp_server\*.cs "..\%SERVER_CONFIG_CS_PATH%\" /s /e /y /c /h /r > nul 2> nul
 )
 
 if not "%CLIENT_CONFIG_CS_PATH%" == "" (
 if not exist "..\%CLIENT_CONFIG_CS_PATH%\" mkdir "..\%CLIENT_CONFIG_CS_PATH%\"
 
 echo Client Config CSharp Copy...
-@del /s/q "..\%CLIENT_CONFIG_CS_PATH%\*Cfg.cs" > nul 2> nul
-@xcopy .\bin\csharp_client\*Cfg.cs "..\%CLIENT_CONFIG_CS_PATH%\" /s /e /y /c /h /r > nul 2> nul
-
-@del /s/q "..\%CLIENT_CONFIG_CS_PATH%\ConfMgr.cs" > nul 2> nul
-@xcopy .\bin\csharp_client\ConfMgr.cs "..\%CLIENT_CONFIG_CS_PATH%\" /s /e /y /c /h /r > nul 2> nul
+@del /s/q "..\%CLIENT_CONFIG_CS_PATH%\*.cs" > nul 2> nul
+@xcopy .\bin\csharp_client\*.cs "..\%CLIENT_CONFIG_CS_PATH%\" /s /e /y /c /h /r > nul 2> nul
 )
 
 :: @pause

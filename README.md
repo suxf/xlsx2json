@@ -56,9 +56,22 @@
     },
     "csharp": {
       /**
-      * 导出的json空间命名
+      * 导出的csharp空间命名
       */
-      "namespace": "Xlsx2Json",
+      "namespace": "X2J.Config",
+      /**
+       * 导出的csharp控制类类名
+       */
+      "manager_name": "Configs",
+      /**
+       * 导出的csharp行类类名后缀
+       */
+      "row_suffix": "",
+      /**
+       * 导出的csharp集合类类名后缀
+       */
+      "collection_suffix": "s",
+      "has_extension": false,
       /**
        * 导出的csharp存放的Server位置
        * 调用windows批处理请勿修改此配置

@@ -10,6 +10,9 @@
   },
   "csharp": {
     "namespace": "X2J.Config",
+    "manager_name": "Configs",
+    "row_suffix": "Cfg",
+    "collection_suffix": "Cfgs",
     "has_extension": false,
     "csharp_server_dest": "./bin/csharp_server",
     "csharp_client_dest": "./bin/csharp_client"
