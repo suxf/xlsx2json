@@ -26,8 +26,8 @@ if %errorLevel% == 0 (
 	echo 导出快捷方式...
     call "%ROOT_DIR%settings\%MACAddress%.bat"
 
-	powershell -Command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut('%ROOT_DIR%..\!XLSX_CONFIG_PATH!\~导出Json.lnk'); $s.TargetPath = '%ROOT_DIR%\export.bat'; $s.WorkingDirectory = '%ROOT_DIR%'; $s.Save()"
-	echo %ROOT_DIR%..\!XLSX_CONFIG_PATH!\~导出Json.lnk
+	powershell -Command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut('%ROOT_DIR%..\!XLSX_CONFIG_PATH!\~~~~~导出JSON~~~~~.lnk'); $s.TargetPath = '%ROOT_DIR%\export.bat'; $s.WorkingDirectory = '%ROOT_DIR%'; $s.Save()"
+	echo %ROOT_DIR%..\!XLSX_CONFIG_PATH!\~~~~~导出JSON~~~~~.lnk
 	exit
 )
 echo 无管理员权限

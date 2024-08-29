@@ -117,11 +117,11 @@ if not exist "..\%XLSX_CONFIG_PATH%\" (
 )
 
 for %%F in (.\docs\~*.xlsx) do (
-    xcopy "%%F" "..\%XLSX_CONFIG_PATH%\" /y /c /h /r
+    xcopy "%%F" "..\%XLSX_CONFIG_PATH%\" /y /c /h /r >nul 2>&1
 )
 
 :: 创建快捷方式
-set "SHORTCUT_NAME=~导出Json.lnk"
+set "SHORTCUT_NAME=~~~~~导出JSON~~~~~.lnk"
 if not exist "%ROOT_DIR%\%XLSX_CONFIG_PATH%\%SHORTCUT_NAME%" (
 	powershell -Command "Start-Process cmd -Verb RunAs -ArgumentList '/c "%cd%\\createshortcut.bat" cd /d %cd% %* & %~dpnx0 %*'"
 )
