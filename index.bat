@@ -10,6 +10,8 @@ if not exist .\bin\json_client mkdir .\bin\json_client
 
 @del /s/q .\bin\json_server\*.json > nul 2> nul
 @del /s/q .\bin\json_client\*.json > nul 2> nul
+@del /s/q .\bin\json_server\*.d.ts > nul 2> nul
+@del /s/q .\bin\json_client\*.d.ts > nul 2> nul
 
 :: 没有bin\csharp目录创建一个bin\csharp目录
 if not exist .\bin\csharp_server mkdir .\bin\csharp_server
@@ -28,6 +30,8 @@ echo.
 echo Server Config Json Copy...
 @del /s/q "..\%SERVER_CONFIG_PATH%\*.json" > nul 2> nul
 @xcopy .\bin\json_server\*.json "..\%SERVER_CONFIG_PATH%\" /s /e /y /c /h /r > nul 2> nul
+@del /s/q "..\%SERVER_CONFIG_PATH%\*.d.ts" > nul 2> nul
+@xcopy .\bin\json_server\*.d.ts "..\%SERVER_CONFIG_PATH%\" /s /e /y /c /h /r > nul 2> nul
 )
 
 if not "%CLIENT_CONFIG_PATH%" == "" (
@@ -36,6 +40,8 @@ echo.
 echo Client Config Json Copy...
 @del /s/q "..\%CLIENT_CONFIG_PATH%\*.json" > nul 2> nul
 @xcopy .\bin\json_client\*.json "..\%CLIENT_CONFIG_PATH%\" /s /e /y /c /h /r > nul 2> nul
+@del /s/q "..\%CLIENT_CONFIG_PATH%\*.d.ts" > nul 2> nul
+@xcopy .\bin\json_client\*.d.ts "..\%CLIENT_CONFIG_PATH%\" /s /e /y /c /h /r > nul 2> nul
 )
 
 :: 迁移csharp文件
