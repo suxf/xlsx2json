@@ -1,30 +1,27 @@
 {
   "name": "xlsx2json",
   "main": "index.js",
-  "version": "0.3.0",
-  "description": "convert complex xlsx to json",
-  "homepage": "https://github.com/koalaylj/xlsx2json",
-  "author": "于小懒",
-  "licenses": "MIT",
+  "version": "1.0.9",
+  "description": "convert complex excel to json",
+  "homepage": "https://github.com/suxf/xlsx2json",
+  "author": "suxf",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/koalaylj/xlsx2json.git"
+    "url": "https://github.com/suxf/xlsx2json.git"
   },
   "keywords": [
     "xlsx",
     "excel",
     "json",
+    "csharp",
     "convert",
-    "game developer",
-    "mongo"
+    "game developer"
   ],
-  "scripts": {
-    "test": "mocha ./test/test.js"
-  },
   "dependencies": {
-    "glob": "3.2.9",
-    "lodash": "^4.17.10",
-    "node-xlsx": "^0.12.0",
-    "readline-sync": "^1.4.10"
+    "glob": "7.2.3",
+    "lodash": "^4.17.21",
+    "node-xlsx": "^0.24.0",
+    "readline-sync": "1.4.10"
   }
 }

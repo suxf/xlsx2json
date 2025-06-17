@@ -10,7 +10,7 @@ for /f "usebackq tokens=1 delims= " %%i in (`getmac ^| find "-"`) do (
 :break
 cls
 
-title 创建导出快捷方式
+title [创建导出快捷方式 - https://github.com/suxf/xlsx2json]
 
 set ROOT_DIR=%~dp0
 

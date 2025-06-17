@@ -22,13 +22,23 @@
          * 导出的json存放的Server位置
          * 调用windows批处理请勿修改此配置
          */
-        "json_server_dest": "./bin/json_server"
+        "json_server_dest": "./bin/json_server",
 
         /**
          * 导出带有头“_”的字段json存放的Client位置
          * 调用windows批处理请勿修改此配置
          */
-        "json_client_dest": "./bin/json_client"
+        "json_client_dest": "./bin/json_client",
+
+        /**
+         * 表中各处使用忽略数据字段的前缀符号
+         */
+        "ignore_prefix_symbol": "~",
+
+        /**
+         * 表中各处使用仅导出服务器文件的前缀符号
+         */
+        "only_export_server_prefix": "_",
     },
 
     /**
@@ -66,11 +76,11 @@
       /**
        * 导出的csharp行类类名后缀
        */
-      "row_suffix": "",
+      "row_suffix": "Cfg",
       /**
        * 导出的csharp集合类类名后缀
        */
-      "collection_suffix": "s",
+      "collection_suffix": "Cfgs",
       "has_extension": false,
       /**
        * 导出的csharp存放的Server位置

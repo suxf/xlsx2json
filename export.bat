@@ -21,7 +21,7 @@ pushd..
 set ROOT_DIR=%cd%
 popd
 
-set TITLE_NAME=Excel转换配置工具(支持xlsx,xlsm)
+set TITLE_NAME=[Excel转换配置工具(支持xlsx,xlsm) - https://github.com/suxf/xlsx2json]
 title %TITLE_NAME%
 echo %TITLE_NAME%
 

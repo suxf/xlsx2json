@@ -1,5 +1,5 @@
 @echo off
-title [convert excel]
+title [Excel convert json tool(support xlsx,xlsm) - https://github.com/suxf/xlsx2json]
 :: echo press any button to start.
 :: @pause > nul
 :: echo convert excel start ....

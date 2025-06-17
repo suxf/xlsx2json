@@ -2,7 +2,9 @@
   "xlsx": {
     "src": "../excel/**/[^~$]*.xls[xm]",
     "json_server_dest": "./bin/json_server",
-    "json_client_dest": "./bin/json_client"
+    "json_client_dest": "./bin/json_client",
+    "ignore_prefix_symbol": "~",
+    "only_export_server_prefix": "_"
   },
   "json": {
     "extension": ".json",
