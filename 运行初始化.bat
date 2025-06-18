@@ -9,6 +9,6 @@ echo.
 echo 》》》 按下任意键进入网站并完成初始化配置 《《《
 echo.
 pause
-start https://github.com/suxf/xlsx2json
+start https://github.com/suxf/xlsx2json/releases
 
 export.bat
