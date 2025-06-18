@@ -1,7 +1,7 @@
 {
   "name": "xlsx2json",
   "main": "index.js",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "convert complex excel to json",
   "homepage": "https://github.com/suxf/xlsx2json",
   "author": "suxf",
