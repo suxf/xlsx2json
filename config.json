@@ -6,19 +6,19 @@
     "ignore_prefix_symbol": "~",
     "only_export_server_prefix": "_"
   },
+  "ts": false,
   "json": {
     "extension": ".json",
     "uglify": true
   },
+  "cs": true,
   "csharp": {
-    "namespace": "X2J.Config",
+    "namespace": "Xlsx2Json",
     "manager_name": "Configs",
     "row_suffix": "Cfg",
     "collection_suffix": "Cfgs",
     "has_extension": false,
     "csharp_server_dest": "./bin/csharp_server",
     "csharp_client_dest": "./bin/csharp_client"
-  },
-  "ts": false,
-  "cs": true
+  }
 }
