@@ -1,7 +1,7 @@
 @echo off
 title [xlsx2json初始化工具 - https://github.com/suxf/xlsx2json]
 setlocal
-set CURRENT_VERSION=1.1.3
+set CURRENT_VERSION=1.1.4
 
 set GITHUB_USER=suxf
 set GITHUB_REPO=xlsx2json
