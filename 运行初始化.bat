@@ -1,7 +1,20 @@
 @echo off
 title [xlsx2json³õÊ¼»¯¹¤¾ß - https://github.com/suxf/xlsx2json]
-setlocal
-set CURRENT_VERSION=1.1.4
+setlocal enabledelayedexpansion
+:: ´Ó package.json ¶ÁÈ¡µ±Ç°°æ±¾
+set "CURRENT_VERSION="
+for /f "usebackq tokens=2 delims=:," %%a in (`findstr /i "\"version\"" package.json`) do (
+    set "raw_version=%%a"
+    :: ÒÆ³ýÒýºÅºÍ¿Õ¸ñ
+    set "CURRENT_VERSION=!raw_version:"=!"
+    set "CURRENT_VERSION=!CURRENT_VERSION: =!"
+)
+
+:: ÑéÖ¤µ±Ç°°æ±¾ÊÇ·ñ»ñÈ¡³É¹¦
+if not defined CURRENT_VERSION (
+	echo ÎÞ·¨´Ópackage.jsonÖÐ»ñÈ¡version×Ö¶Î£¬¼ÌÐøÖ´ÐÐÔ­Á÷³Ì...
+    goto :continue
+)
 
 set GITHUB_USER=suxf
 set GITHUB_REPO=xlsx2json
@@ -25,6 +38,18 @@ if errorlevel 1 (
     goto :continue
 )
 
+:: ÌáÈ¡tag_nameµÄÖµ
+for /f "tokens=2 delims=:," %%a in ('findstr /i "tag_name" "%TEMP%\latest_release.json"'
+) do (
+    set "LATEST_VERSION_TAG=%%~a"
+)
+
+:: ÅÐ¶ÏÊÇ·ñ³É¹¦»ñÈ¡
+if not defined LATEST_VERSION_TAG (
+    echo Î´ÄÜÊ¶±ð×îÐÂ°æ±¾ºÅ£¬¼ÌÐøÖ´ÐÐÔ­Á÷³Ì...
+    goto :continue
+)
+
 for /f "tokens=2 delims=:," %%a in ('findstr /i "tag_name" "%TEMP%\latest_release.json"') do (
     set "LATEST_VERSION=%%~a"
 )
@@ -36,11 +61,63 @@ if "%LATEST_VERSION%"=="" (
     goto :continue
 )
 
-if "%CURRENT_VERSION%"=="%LATEST_VERSION%" (
-    echo ÒÑÊÇ×îÐÂ°æ±¾¡£
-) else (
-    echo ¼ì²âµ½ÐÂ°æ±¾£º%LATEST_VERSION%£¬ÕýÔÚÌø×ªÐÂ°æ±¾ÏÂÔØÒ³Ãæ...
+REM if "%CURRENT_VERSION%"=="%LATEST_VERSION%" (
+REM     echo ÒÑÊÇ×îÐÂ°æ±¾¡£
+REM ) else (
+REM     echo ¼ì²âµ½ÐÂ°æ±¾£º%LATEST_VERSION%£¬ÕýÔÚÌø×ªÐÂ°æ±¾ÏÂÔØÒ³Ãæ...
+REM     start "" "%RELEASE_URL%"
+REM )
+
+::: °æ±¾±È½Ïº¯Êý ::::::::::::::::::::::::::
+setlocal enabledelayedexpansion
+set "verA=%CURRENT_VERSION%"
+set "verB=%LATEST_VERSION%"
+
+:: ²ð·Ö°æ±¾ºÅ×é¼þ
+for /f "tokens=1-4 delims=." %%a in ("!verA!") do (
+    set "a1=%%a" & set "a2=%%b" & set "a3=%%c" & set "a4=%%d"
+)
+for /f "tokens=1-4 delims=." %%a in ("!verB!") do (
+    set "b1=%%a" & set "b2=%%b" & set "b3=%%c" & set "b4=%%d"
+)
+
+:: ´¦Àí¿ÕÖµ£¨Ä¬ÈÏÉèÎªÁã£©
+if "!a1!"=="" set "a1=0"
+if "!a2!"=="" set "a2=0"
+if "!a3!"=="" set "a3=0"
+if "!a4!"=="" set "a4=0"
+if "!b1!"=="" set "b1=0"
+if "!b2!"=="" set "b2=0"
+if "!b3!"=="" set "b3=0"
+if "!b4!"=="" set "b4=0"
+
+:: Öð¼¶±È½Ï°æ±¾ºÅ
+set "result=0"
+if !b1! gtr !a1! (set "result=1" & goto :end_compare)
+if !b1! lss !a1! (set "result=0" & goto :end_compare)
+
+if !b2! gtr !a2! (set "result=1" & goto :end_compare)
+if !b2! lss !a2! (set "result=0" & goto :end_compare)
+
+if !b3! gtr !a3! (set "result=1" & goto :end_compare)
+if !b3! lss !a3! (set "result=0" & goto :end_compare)
+
+if !b4! gtr !a4! (set "result=1" & goto :end_compare)
+if !b4! lss !a4! (set "result=0" & goto :end_compare)
+
+:end_compare
+endlocal & set "NEWER_AVAILABLE=%result%"
+
+
+if %NEWER_AVAILABLE% equ 1 (
+    echo ¼ì²âµ½ÐÂ°æ±¾£º%LATEST_VERSION%
+	echo.
+	echo ä¯ÀÀÆ÷×Ô¶¯Ìø×ª×îÐÂ°æ±¾ÏÂÔØÒ³Ãæ...
+	echo ºöÂÔ¸üÐÂÇë°´ÈÎÒâ¼ü¼ÌÐø...
     start "" "%RELEASE_URL%"
+	pause
+) else (
+    echo ÒÑÊÇ×îÐÂ°æ±¾¡£
 )
 
 :continue
@@ -53,7 +130,7 @@ echo ¹¤¾ß±¾ÉíÔÊÐíÇëÒÔµ±Ç°ÓÃ»§Éí·ÝÔËÐÐ£¬·ñÔòÎÞ·¨Õý³£Ê¹ÓÃ¡£´´½¨¿ì½Ý·½Ê½»á×Ô¶¯ÉêÇë¹
 echo.
 echo ÌáÊ¾£ºÃ¿´ÎÔËÐÐ³õÊ¼»¯½Å±¾Ê±»á×Ô¶¯¼ì²â°æ±¾¸üÐÂ£¬Èç¹û´æÔÚÐÂ°æ±¾»á×Ô¶¯Ìø×ªÍøÕ¾¡£
 echo.
-echo ¡·¡·¡· °´ÏÂÈÎÒâ¼ü¿ªÊ¼³õÊ¼»¯ ¡¶¡¶¡¶
+echo °´ÏÂÈÎÒâ¼ü¿ªÊ¼³õÊ¼»¯...
 pause >nul
 
 export.bat
