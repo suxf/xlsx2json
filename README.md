@@ -55,14 +55,19 @@
 
     "json": {
       /**
-       * 导出的json是否需要压缩
+	     * 导出配置文件的拓展名
+	     */
+	    "extension": ".json",
+      /**
+       * 客户端导出的json是否需要压缩
        * true:压缩，false:不压缩(便于阅读的格式)
        */
-      "uglify": false,
-	  /**
-	   * 导出配置文件的拓展名
-	   */
-	  "extension": ".json"
+      "client_uglify": true,
+      /**
+       * 服务器导出的json是否需要压缩
+       * true:压缩，false:不压缩(便于阅读的格式)
+       */
+      "server_uglify": false
     },
     "csharp": {
       /**

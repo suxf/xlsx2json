@@ -9,7 +9,8 @@
   "ts": false,
   "json": {
     "extension": ".json",
-    "uglify": true
+    "client_uglify": true,
+    "server_uglify": false
   },
   "cs": true,
   "csharp": {

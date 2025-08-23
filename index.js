@@ -56,21 +56,19 @@ function exportJson(args) {
     var uglify = readline.question("Compress JSON? [Press enter directly to read the configuration] (y/n): ");
     if(uglify == "y") uglify = true;
     else if(uglify == 'n') uglify = false;
-    else uglify = config.json.uglify;
+    else uglify = undefined;
 
     if (typeof args === 'undefined' || args.length === 0) {
         let files = glob.sync(config.xlsx.src);
 
         console.log("\nClient Parser:");
         files.forEach(item => {
-            // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
-            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify ?? config.json.client_uglify);
         });
 
         console.log("\nServer Parser:");
         files.forEach(item => {
-            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
-            // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+            xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify ?? config.json.server_uglify);
         });
 
         if (config.cs) {
@@ -84,14 +82,12 @@ function exportJson(args) {
 
                 console.log("\nClient Parser:");
                 files.forEach(item => {
-                    // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
-                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify ?? config.json.client_uglify);
                 });
                 
                 console.log("\nServer Parser:");
                 files.forEach(item => {
-                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify);
-                    // xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_client_dest), path.join(__dirname, config.csharp.csharp_client_dest), true, uglify);
+                    xlsx.toJson(path.join(__dirname, item), path.join(__dirname, config.xlsx.json_server_dest), path.join(__dirname, config.csharp.csharp_server_dest), false, uglify ?? config.json.server_uglify);
                 });
             });
 
